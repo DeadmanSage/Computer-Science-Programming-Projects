@@ -5,6 +5,7 @@ import tkinter.font as font
 import tkinter.messagebox
 LoginScreen = None
 BackColour = "#b3b1b1" # set the bakcground colour as a variable since it will be easier to call and make programming faster
+Toplevel = ""
 
 global username
 global password
@@ -26,12 +27,13 @@ global password_check
 # creating the main screen, will be used to greet users to the appication before logging in
 def MainScreen():
     main_screen = tkinter.Tk()
-    LoginSystem()
+    
+    #main_screen.mainloop()
 
 def LoginSystem():
     file = open("Login.txt")
 
-    LoginScreen = TopLevel(main_screen)
+    LoginScreen = tkinter.Tk()
     LoginScreen.config(bg=BackColour) # setting the background colour
     LoginScreen.title("Sign into Account") # window title
     LoginScreen.geometry("500x500") # window size
@@ -39,14 +41,19 @@ def LoginSystem():
 
     username_check = StringVar()
     password_check = StringVar()
-
-    #Label(LoginScreen, text="Login with school account to continue", bg="white", width="30",height="1", font=("Calibri", 10)).place(relx=0.3,rely=0.5, anchor=CENTER)
-    #Label(LoginScreen, text="Username ").pack()
-    #username_entry = Entry(LoginScreen, textvariable=username_check)
-    #username_entry.pack()
-    #Label(LoginScreen, text="").pack()
-
+#username entry
+    Label(LoginScreen, text="Login with school account to continue", bg="white", width="30",height="1", font=("Calibri", 10)).place(relx=0.3,rely=0.5, anchor=CENTER)
+    Label(LoginScreen, text="Username ").pack()
+    username_entry = Entry(LoginScreen, textvariable=username_check)
+    username_entry.pack()
+    Label(LoginScreen, text="").pack()
+#password entry
+    Label(LoginScreen, text="Password ").pack()
+    password_entry = Entry(LoginScreen,show = "*",  textvariable=password_check)
+    password_entry.pack()
     Button(text="Login", height=2, width=20).place(relx=0.3,rely=0.8, anchor=CENTER)
+
+    LoginScreen.mainloop()
 
 
 # doesnt work for some reason, having issues with getting the label to run
@@ -58,9 +65,7 @@ def LoginSystem():
 
 
 
-#function = LoginSystem()
 
 
+LoginSystem()    
 MainScreen()
-main_screen.mainloop()
-    
