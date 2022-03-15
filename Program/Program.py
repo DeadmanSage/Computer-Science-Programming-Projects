@@ -31,29 +31,59 @@ def MainScreen():
     #main_screen.mainloop()
 
 def LoginSystem():
-    file = open("Login.txt")
+    
+      
+
 
     LoginScreen = tkinter.Tk()
     LoginScreen.config(bg=BackColour) # setting the background colour
     LoginScreen.title("Sign into Account") # window title
-    LoginScreen.geometry("500x500") # window size
+    LoginScreen.geometry("500x500")
+    LoginScreen.maxsize(500, 500)
+    LoginScreen.minsize(500, 500)
+     # window size
     #makes a screen for login
 
-    username_check = StringVar()
-    password_check = StringVar()
+    #username_check = StringVar()
+    #password_check = StringVar()
+
 #username entry
     Label(LoginScreen, text="Login with school account to continue", bg="white", width="30",height="1", font=("Calibri", 10)).place(relx=0.3,rely=0.5, anchor=CENTER)
     Label(LoginScreen, text="Username ").pack()
-    username_entry = Entry(LoginScreen, textvariable=username_check)
+    global username_entry
+    username_entry = Entry(LoginScreen)
     username_entry.pack()
     Label(LoginScreen, text="").pack()
 #password entry
     Label(LoginScreen, text="Password ").pack()
-    password_entry = Entry(LoginScreen,show = "*",  textvariable=password_check)
+    global password_entry
+    password_entry = Entry(LoginScreen,show = "*")
     password_entry.pack()
-    Button(text="Login", height=2, width=20).place(relx=0.3,rely=0.8, anchor=CENTER)
+    Button(text="Login", height=2, width=20, command=Login).place(relx=0.3,rely=0.8, anchor=CENTER)
 
+    file = r"C:\Users\stu-dyer.b\OneDrive - Brighter Futures Learning Partnership Trust\Documents\GitHub\Computer-Science-Programming-Projects\Program\Login.txt"
     LoginScreen.mainloop()
+
+# We want to call the global variable code(below) when the button is pressed so that they are updated accordingly. 
+
+    # global username
+    # username = username_entry.get()
+    # global password
+    # password = password_entry.get()
+
+    # print(username, password)
+
+    # username = "username"
+    # password = "password"
+
+
+
+def Login():
+    hash_username = hash(username_entry.get())
+    hash_password = hash(password_entry.get())
+    print(hash_username)
+    print(hash_password)
+
 
 
 # doesnt work for some reason, having issues with getting the label to run
