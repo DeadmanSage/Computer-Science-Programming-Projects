@@ -1,8 +1,13 @@
 
+from email import message
 import tkinter
 from tkinter import *
 import tkinter.font as font
 import tkinter.messagebox
+import time
+import hashlib
+from hashlib import sha256
+
 LoginScreen = None
 BackColour = "#b3b1b1" # set the bakcground colour as a variable since it will be easier to call and make programming faster
 Toplevel = ""
@@ -25,10 +30,7 @@ global password_check
 #screen.mainloop() #required to start instructions
 
 # creating the main screen, will be used to greet users to the appication before logging in
-def MainScreen():
-    main_screen = tkinter.Tk()
-    
-    #main_screen.mainloop()
+
 
 def LoginSystem():
     
@@ -47,6 +49,8 @@ def LoginSystem():
     #username_check = StringVar()
     #password_check = StringVar()
 
+    global password
+    global username
 #username entry
     Label(LoginScreen, text="Login with school account to continue", bg="white", width="30",height="1", font=("Calibri", 10)).place(relx=0.3,rely=0.5, anchor=CENTER)
     Label(LoginScreen, text="Username ").pack()
@@ -59,31 +63,39 @@ def LoginSystem():
     global password_entry
     password_entry = Entry(LoginScreen,show = "*")
     password_entry.pack()
-    Button(text="Login", height=2, width=20, command=Login).place(relx=0.3,rely=0.8, anchor=CENTER)
-
+    Button(text="Login", height=2, width=20, command=Login,).place(relx=0.3,rely=0.8, anchor=CENTER)
+    Button(text="quit", foreground='#7a0909', command=quit, height=2, width=20,).pack()
+    time.sleep(2)
+    
     file = r"C:\Users\stu-dyer.b\OneDrive - Brighter Futures Learning Partnership Trust\Documents\GitHub\Computer-Science-Programming-Projects\Program\Login.txt"
     LoginScreen.mainloop()
 
 # We want to call the global variable code(below) when the button is pressed so that they are updated accordingly. 
 
-    # global username
-    # username = username_entry.get()
-    # global password
-    # password = password_entry.get()
+    #username = username_entry.get()
 
-    # print(username, password)
+    #password = password_entry.get()
 
-    # username = "username"
-    # password = "password"
+    #print(username, password)
+
+ #username = "username"
+# password = "password"
 
 
 
 def Login():
-    hash_username = hash(username_entry.get())
-    hash_password = hash(password_entry.get())
-    print(hash_username)
-    print(hash_password)
+    hash_username = (username_entry.get()).encode()
+    hash_password = (password_entry.get()).encode()
+    print( sha256(hash_username).hexdigest())
+    print( sha256(hash_password).hexdigest())
 
+#print("SHA-256:", hashlib.sha256(message).hexdigest())
+
+# going to put this system on hold while i focus on my recommendation system
+
+def recc():
+    Inventory = r"C:\Users\stu-dyer.b\OneDrive - Brighter Futures Learning Partnership Trust\Documents\GitHub\Computer-Science-Programming-Projects\Program\Inventory.txt"
+    InventoryScreen = tkinter.Tk
 
 
 # doesnt work for some reason, having issues with getting the label to run
@@ -98,4 +110,3 @@ def Login():
 
 
 LoginSystem()    
-MainScreen()
