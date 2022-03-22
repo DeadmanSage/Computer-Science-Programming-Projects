@@ -32,7 +32,7 @@ global password_check
 
 # creating the main screen, will be used to greet users to the appication before logging in
 
-'''
+
 def LoginSystem():
     
       
@@ -69,12 +69,12 @@ def LoginSystem():
     
     file = r"C:\Users\stu-dyer.b\OneDrive - Brighter Futures Learning Partnership Trust\Documents\GitHub\Computer-Science-Programming-Projects\Program\Login.txt"
     LoginScreen.mainloop()
-'''
 
 
 
 
-'''
+
+
 def Login():
     hash_username = (username_entry.get()).encode()
     hash_password = (password_entry.get()).encode()
@@ -82,7 +82,7 @@ def Login():
     print( sha256(hash_password).hexdigest())
 
 #print("SHA-256:", hashlib.sha256(message).hexdigest())
-'''
+
 # going to put this system on hold while i focus on my recommendation system
 
 def recommending():
