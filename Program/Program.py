@@ -7,6 +7,7 @@ import tkinter.messagebox
 import time
 import hashlib
 from hashlib import sha256
+import Inventory
 
 LoginScreen = None
 BackColour = "#b3b1b1" # set the bakcground colour as a variable since it will be easier to call and make programming faster
@@ -31,7 +32,7 @@ global password_check
 
 # creating the main screen, will be used to greet users to the appication before logging in
 
-
+'''
 def LoginSystem():
     
       
@@ -46,8 +47,7 @@ def LoginSystem():
      # window size
     #makes a screen for login
 
-    #username_check = StringVar()
-    #password_check = StringVar()
+   
 
     global password
     global username
@@ -69,20 +69,12 @@ def LoginSystem():
     
     file = r"C:\Users\stu-dyer.b\OneDrive - Brighter Futures Learning Partnership Trust\Documents\GitHub\Computer-Science-Programming-Projects\Program\Login.txt"
     LoginScreen.mainloop()
-
-# We want to call the global variable code(below) when the button is pressed so that they are updated accordingly. 
-
-    #username = username_entry.get()
-
-    #password = password_entry.get()
-
-    #print(username, password)
-
- #username = "username"
-# password = "password"
+'''
 
 
 
+
+'''
 def Login():
     hash_username = (username_entry.get()).encode()
     hash_password = (password_entry.get()).encode()
@@ -90,24 +82,31 @@ def Login():
     print( sha256(hash_password).hexdigest())
 
 #print("SHA-256:", hashlib.sha256(message).hexdigest())
-
+'''
 # going to put this system on hold while i focus on my recommendation system
 
-def recc():
-    Inventory = r"C:\Users\stu-dyer.b\OneDrive - Brighter Futures Learning Partnership Trust\Documents\GitHub\Computer-Science-Programming-Projects\Program\Inventory.txt"
-    InventoryScreen = tkinter.Tk
+def recommending():
+    InventoryScreen = tkinter.Tk()
+    InventoryScreen.config(bg=BackColour) # setting the background colour
+    InventoryScreen.title("") # window title
+    InventoryScreen.geometry("1920x1080")
+    InventoryScreen.maxsize(1920,1080)
+    InventoryScreen.minsize(1920,1080)
+    scrollbar = Scrollbar(InventoryScreen)
+    scrollbar.pack( side = RIGHT, fill = Y )
+
+    InvList = Listbox(InventoryScreen, yscrollcommand= scrollbar.set )
+    #for line in range(100):
+       #InvList.insert(END, "This is line number " = str(line))
 
 
-# doesnt work for some reason, having issues with getting the label to run
-# needed to make with and height
-
-# fixed issue 
-
-    #UserEntry = 
+    InventoryScreen.mainloop()
 
 
 
 
 
-LoginSystem()    
+#LoginSystem()   
+
+recommending() 
 
