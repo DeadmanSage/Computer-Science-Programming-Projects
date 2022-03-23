@@ -8,6 +8,7 @@ import time
 import hashlib
 from hashlib import sha256
 import Inventory
+from Inventory import InventoryReader
 
 LoginScreen = None
 BackColour = "#b3b1b1" # set the bakcground colour as a variable since it will be easier to call and make programming faster
@@ -92,12 +93,20 @@ def recommending():
     InventoryScreen.geometry("1920x1080")
     InventoryScreen.maxsize(1920,1080)
     InventoryScreen.minsize(1920,1080)
-    scrollbar = Scrollbar(InventoryScreen)
-    scrollbar.pack( side = RIGHT, fill = Y )
 
-    InvList = Listbox(InventoryScreen, yscrollcommand= scrollbar.set )
-    #for line in range(100):
-       #InvList.insert(END, "This is line number " = str(line))
+
+    # scrollbar = Scrollbar(InventoryScreen)
+    # scrollbar.pack( side = RIGHT, fill = Y )
+
+    # InvList = Listbox(InventoryScreen, yscrollcommand= scrollbar.set )
+    # for line in range(100):
+    #    InvList.insert()
+    list = []
+    for row in Inventory:
+        list.append(row.get('Name'))
+    print(list)
+    
+ 
 
 
     InventoryScreen.mainloop()
