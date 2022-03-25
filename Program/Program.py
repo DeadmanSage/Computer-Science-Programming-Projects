@@ -101,17 +101,29 @@ def recommending():
     # InvList = Listbox(InventoryScreen, yscrollcommand= scrollbar.set )
     # for line in range(100):
     #    InvList.insert()
-    list = []
-    for row in Inventory:
-        list.append(row.get('Name'))
-    print(list)
+
+    # list = []
+    # for row in Inventory:
+    #     list.append(row.get('Name'))
+    # print(list)
+    dropdown = []
+
+    for row in Inventory.temp: # getting error saying object is not iterable
+        print(row.get("Name") + " " + row.get("UC"))
+        dropdown.append((row.get('Name') + " " + row.get('UC')))
+
+    scrollbar = Scrollbar(InventoryScreen)
+    #InvList = Listbox(InventoryScreen, yscrollcommand= scrollbar.set )
     
- 
-
-
+    listdef = StringVar(InventoryScreen)
+    listdef.set(dropdown[0])
+    w = OptionMenu(InventoryScreen, listdef, *dropdown)
+    w.pack()
+    
     InventoryScreen.mainloop()
 
-
+def getBox():
+    w.get()
 
 
 

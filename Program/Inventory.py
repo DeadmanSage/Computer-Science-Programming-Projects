@@ -8,10 +8,29 @@ with open(Inventory) as Equipment:
 
 attributes = ['Type','Name','Job','UC','Available']
 
-for item in InventoryArray:
-    test = dict(zip(attributes, item))
+temp = []
+dropdown = []
 
-print(test.get('Name'))
+for item in InventoryArray:
+    Category = dict(zip(attributes, item))
+
+with open('Inventory .csv', 'r') as readObj:
+    # pass the file object to reader() to get the reader object
+    csvReader = csv.reader(readObj)
+    next(csvReader)
+    # Iterate over each row in the csv using reader object
+    for row in csvReader:
+        x = dict(zip(attributes, row))
+        temp.append(x)
+        
+
+print(temp)
+
+
+    
+
+
+
 
 
 
