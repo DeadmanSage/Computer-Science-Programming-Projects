@@ -1,6 +1,8 @@
 import csv
+import os
 
-Inventory = r'C:\Users\stu-dyer.b\OneDrive - Brighter Futures Learning Partnership Trust\Documents\GitHub\Computer-Science-Programming-Projects\Program\Inventory .csv'
+# Inventory = r'C:\Users\stu-dyer.b\OneDrive - Brighter Futures Learning Partnership Trust\Documents\GitHub\Computer-Science-Programming-Projects\Program\Inventory.csv'
+Inventory = r'Program\Inventory.csv'
 with open(Inventory) as Equipment:
     InventoryReader = csv.reader(Equipment)
     InventoryArray = list(InventoryReader)
@@ -14,7 +16,7 @@ dropdown = []
 for item in InventoryArray:
     Category = dict(zip(attributes, item))
 
-with open('Inventory .csv', 'r') as readObj:
+with open(Inventory) as readObj:
     # pass the file object to reader() to get the reader object
     csvReader = csv.reader(readObj)
     next(csvReader)

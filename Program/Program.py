@@ -1,5 +1,6 @@
 
 from email import message
+from random import choice
 import tkinter
 from tkinter import *
 import tkinter.font as font
@@ -13,6 +14,7 @@ from Inventory import InventoryReader
 LoginScreen = None
 BackColour = "#b3b1b1" # set the bakcground colour as a variable since it will be easier to call and make programming faster
 Toplevel = ""
+w = None
 
 global username
 global password
@@ -65,10 +67,11 @@ def LoginSystem():
     password_entry = Entry(LoginScreen,show = "*")
     password_entry.pack()
     Button(text="Login", height=2, width=20, command=Login,).place(relx=0.3,rely=0.8, anchor=CENTER)
-    Button(text="quit", foreground='#7a0909', command=quit, height=2, width=20,).pack()
+    Button(text="quit", foreground='#7a0909', command=lambda:[LoginScreen.destroy, recommending()], height=2, width=20,).pack()
     time.sleep(2)
     
     file = r"C:\Users\stu-dyer.b\OneDrive - Brighter Futures Learning Partnership Trust\Documents\GitHub\Computer-Science-Programming-Projects\Program\Login.txt"
+    
     LoginScreen.mainloop()
 
 
@@ -87,6 +90,8 @@ def Login():
 # going to put this system on hold while i focus on my recommendation system
 
 def recommending():
+    global w
+
     InventoryScreen = tkinter.Tk()
     InventoryScreen.config(bg=BackColour) # setting the background colour
     InventoryScreen.title("") # window title
@@ -108,26 +113,43 @@ def recommending():
     # print(list)
     dropdown = []
 
+
     for row in Inventory.temp: # getting error saying object is not iterable
         print(row.get("Name") + " " + row.get("UC"))
         dropdown.append((row.get('Name') + " " + row.get('UC')))
 
     scrollbar = Scrollbar(InventoryScreen)
     #InvList = Listbox(InventoryScreen, yscrollcommand= scrollbar.set )
-    
+    def display_selected(choice):
+        choice = listdef.get()
+        print(choice)
+        Choice(choice)
+
+    def Choice(displayChoice):
+        # if the selected item isnt available, it will search once for the tag for its category
+        # it will then search all the csv for items with the same tag and add them to a list to be printed as a recommended alternative
+        SimilarItems = []
+        print(displayChoice)
+        #get_UC = 
+
     listdef = StringVar(InventoryScreen)
     listdef.set(dropdown[0])
-    w = OptionMenu(InventoryScreen, listdef, *dropdown)
+    w = OptionMenu(InventoryScreen, listdef, *dropdown, command=display_selected)
     w.pack()
-    
+
+
     InventoryScreen.mainloop()
 
 def getBox():
-    w.get()
+    global w
+    print(w.get())
 
 
 
-#LoginSystem()   
+             
+        
 
-recommending() 
 
+LoginSystem()   
+
+#recommending() 
