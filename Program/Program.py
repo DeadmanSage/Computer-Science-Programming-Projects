@@ -10,11 +10,13 @@ import hashlib
 from hashlib import sha256
 import Inventory
 from Inventory import InventoryReader
+import csv
 
 LoginScreen = None
 BackColour = "#b3b1b1" # set the bakcground colour as a variable since it will be easier to call and make programming faster
 Toplevel = ""
 w = None
+file = None
 
 global username
 global password
@@ -54,6 +56,7 @@ def LoginSystem():
 
     global password
     global username
+    global file
 #username entry
     Label(LoginScreen, text="Login with school account to continue", bg="white", width="30",height="1", font=("Calibri", 10)).place(relx=0.3,rely=0.5, anchor=CENTER)
     Label(LoginScreen, text="Username ").pack()
@@ -130,7 +133,28 @@ def recommending():
         # it will then search all the csv for items with the same tag and add them to a list to be printed as a recommended alternative
         SimilarItems = []
         print(displayChoice)
-        #get_UC = 
+        #GetUC = displayChoice[displayChoice.rindex(' ')]
+        GetUC = int(displayChoice.rsplit(' ')[-1])
+        print(GetUC)
+        # with open(file) as f:
+
+            # FileReader = csv.reader(f)
+            # FileArray = list(FileReader)
+            # for row in FileArray:
+            #     print(row)
+            #     print(FileArray)
+        File = r'Program\Inventory.csv'
+        with open(File) as f:
+            FileReader = csv.reader(f)
+            FileArray = list(FileReader)
+            print(FileArray)
+            for row in FileArray:
+                if row[row][3] == str(GetUC):
+                    print("yes")
+
+            
+
+
 
     listdef = StringVar(InventoryScreen)
     listdef.set(dropdown[0])

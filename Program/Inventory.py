@@ -6,7 +6,7 @@ Inventory = r'Program\Inventory.csv'
 with open(Inventory) as Equipment:
     InventoryReader = csv.reader(Equipment)
     InventoryArray = list(InventoryReader)
-# print(InventoryArray)
+    print(InventoryArray)
 
 attributes = ['Type','Name','Job','UC','Available']
 
