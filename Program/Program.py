@@ -132,6 +132,7 @@ def recommending():
         # if the selected item isnt available, it will search once for the tag for its category
         # it will then search all the csv for items with the same tag and add them to a list to be printed as a recommended alternative
         SimilarItems = []
+        filteredList = []
         print(displayChoice)
         #GetUC = displayChoice[displayChoice.rindex(' ')]
         GetUC = int(displayChoice.rsplit(' ')[-1])
@@ -147,16 +148,20 @@ def recommending():
         with open(File) as f:
             FileReader = csv.reader(f)
             FileArray = list(FileReader)
-            next(FileArray)
-            print(FileArray)
-            for row in FileArray:
-                FileArray.pop([3])
-                print(row)
-                if row[int(row)][3] == str(GetUC):
-                    print("yes")
+            j = next(filter(lambda obj: obj.get('UC') == str(GetUC), FileArray), None)
+            print(j)
+            #print(FileArray)
+        #    for row in FileArray:
+        #        if row[3] == GetUC:
+        #            filteredList.append(row)
+        #    print(filteredList)
+
+
+
 
             
-
+#item = next(iter(filter(lambda x: x['name'] == name, items)), None)
+#use this to fix it
 
 
     listdef = StringVar(InventoryScreen)
