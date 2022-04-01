@@ -147,9 +147,12 @@ def recommending():
         with open(File) as f:
             FileReader = csv.reader(f)
             FileArray = list(FileReader)
+            next(FileArray)
             print(FileArray)
             for row in FileArray:
-                if row[row][3] == str(GetUC):
+                FileArray.pop([3])
+                print(row)
+                if row[int(row)][3] == str(GetUC):
                     print("yes")
 
             
