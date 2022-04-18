@@ -74,7 +74,7 @@ def LoginSystem():
     time.sleep(2)
     
    # file = r"C:\Users\stu-dyer.b\OneDrive - Brighter Futures Learning Partnership Trust\Documents\GitHub\Computer-Science-Programming-Projects\Program\Login.txt"
-    file = r"C:\Users\Biowa\Desktop\Computer-Science-Programming-Projects\Program\Login.txt"
+    file = r'C:\Users\Biowa\Desktop\Computer-Science-Programming-Projects\Program\Login.txt'
     LoginScreen.mainloop()
 
 
@@ -146,7 +146,8 @@ def recommending():
             #     print(FileArray)
 
         #File = r'Program\Inventory.csv'
-        File = r"C:\Users\Biowa\Desktop\Computer-Science-Programming-Projects\Program\Inventory.csv"
+        File = r'C:\Users\Biowa\Desktop\Computer-Science-Programming-Projects\Program\Inventory.csv'
+
         with open(File) as f:
             FileReader = csv.reader(f)
             FileArray = list(FileReader)
