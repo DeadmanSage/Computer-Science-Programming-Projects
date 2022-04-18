@@ -74,7 +74,7 @@ def LoginSystem():
     time.sleep(2)
     
    # file = r"C:\Users\stu-dyer.b\OneDrive - Brighter Futures Learning Partnership Trust\Documents\GitHub\Computer-Science-Programming-Projects\Program\Login.txt"
-    file = r'C:\Users\Biowa\Desktop\Computer-Science-Programming-Projects\Program\Login.txt'
+    file = r'Program/Login.txt'
     LoginScreen.mainloop()
 
 
