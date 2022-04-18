@@ -148,7 +148,13 @@ def recommending():
             # for row in FileArray:
             #     print(row)
             #     print(FileArray)
+<<<<<<< Updated upstream
         File = r'Program\Inventory.csv'
+=======
+
+        #File = r'Program\Inventory.csv'
+        File = r"C:\Users\Biowa\Desktop\Computer-Science-Programming-Projects\Program\Inventory .csv"
+>>>>>>> Stashed changes
         with open(File) as f:
             FileReader = csv.reader(f)
             FileArray = list(FileReader)
