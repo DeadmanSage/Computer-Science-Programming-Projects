@@ -2,7 +2,8 @@ import csv
 import os
 
 # Inventory = r'C:\Users\stu-dyer.b\OneDrive - Brighter Futures Learning Partnership Trust\Documents\GitHub\Computer-Science-Programming-Projects\Program\Inventory.csv'
-Inventory = r'Program\Inventory.csv'
+#Inventory = r'Program\Inventory.csv'
+Inventory = r"C:\Users\Biowa\Desktop\Computer-Science-Programming-Projects\Program\Inventory.csv"
 with open(Inventory) as Equipment:
     InventoryReader = csv.reader(Equipment)
     InventoryArray = list(InventoryReader)

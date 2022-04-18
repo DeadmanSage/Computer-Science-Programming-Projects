@@ -73,8 +73,8 @@ def LoginSystem():
     Button(text="quit", foreground='#7a0909', command=lambda:[LoginScreen.destroy, recommending()], height=2, width=20,).pack()
     time.sleep(2)
     
-    file = r"C:\Users\stu-dyer.b\OneDrive - Brighter Futures Learning Partnership Trust\Documents\GitHub\Computer-Science-Programming-Projects\Program\Login.txt"
-    
+   # file = r"C:\Users\stu-dyer.b\OneDrive - Brighter Futures Learning Partnership Trust\Documents\GitHub\Computer-Science-Programming-Projects\Program\Login.txt"
+    file = r"C:\Users\Biowa\Desktop\Computer-Science-Programming-Projects\Program\Login.txt"
     LoginScreen.mainloop()
 
 
@@ -144,12 +144,23 @@ def recommending():
             # for row in FileArray:
             #     print(row)
             #     print(FileArray)
-        File = r'Program\Inventory.csv'
+
+        #File = r'Program\Inventory.csv'
+        File = r"C:\Users\Biowa\Desktop\Computer-Science-Programming-Projects\Program\Inventory.csv"
         with open(File) as f:
             FileReader = csv.reader(f)
             FileArray = list(FileReader)
-            j = next(filter(lambda obj: obj.get('UC') == str(GetUC), FileArray), None)
+            """
+             j = next(filter(lambda obj: obj.get('UC') == str(GetUC), FileArray), None)
             print(j)
+            """
+            for i in range(0, len(FileArray)):
+                print(FileArray[i][3])
+                if str(FileArray[i[3]]) == str(GetUC):
+                    Availability = str(FileArray[i][4])
+                    print(Availability)
+                    break
+           
             #print(FileArray)
         #    for row in FileArray:
         #        if row[3] == GetUC:
