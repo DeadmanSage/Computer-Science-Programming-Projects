@@ -73,8 +73,9 @@ def LoginSystem():
     Button(text="quit", foreground='#7a0909', command=lambda:[LoginScreen.destroy, recommending()], height=2, width=20,).pack()
     time.sleep(2)
     
-    file = r"C:\Users\stu-dyer.b\OneDrive - Brighter Futures Learning Partnership Trust\Documents\GitHub\Computer-Science-Programming-Projects\Program\Login.txt"
-    
+    #file = r"C:\Users\stu-dyer.b\OneDrive - Brighter Futures Learning Partnership Trust\Documents\GitHub\Computer-Science-Programming-Projects\Program\Login.txt"
+    file = r"C:\Users\Biowa\Desktop\Computer-Science-Programming-Projects\Program\Login.txt"
+
     LoginScreen.mainloop()
 
 
@@ -137,6 +138,9 @@ def recommending():
         #GetUC = displayChoice[displayChoice.rindex(' ')]
         GetUC = int(displayChoice.rsplit(' ')[-1])
         print(GetUC)
+        #getUC is integer
+
+
         # with open(file) as f:
 
             # FileReader = csv.reader(f)
