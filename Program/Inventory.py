@@ -3,7 +3,7 @@ import os
 
 # Inventory = r'C:\Users\stu-dyer.b\OneDrive - Brighter Futures Learning Partnership Trust\Documents\GitHub\Computer-Science-Programming-Projects\Program\Inventory.csv'
 #Inventory = r'Program\Inventory.csv'
-Inventory = r"C:\Users\Biowa\Desktop\Computer-Science-Programming-Projects\Program\Inventory.csv"
+Inventory = r'Program/Inventory.csv'
 with open(Inventory) as Equipment:
     InventoryReader = csv.reader(Equipment)
     InventoryArray = list(InventoryReader)
@@ -37,7 +37,7 @@ print(temp)
 
 
 
-Users = r'C:\Users\stu-dyer.b\OneDrive - Brighter Futures Learning Partnership Trust\Documents\GitHub\Computer-Science-Programming-Projects\Program\Users.csv'
+Users = r'Program/Users.csv'
 with open(Users) as People:
     UsersReader = csv.reader(People)
     UserArray = list(UsersReader)
