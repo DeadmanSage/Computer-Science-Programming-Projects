@@ -22,6 +22,8 @@ global username
 global password
 global username_check
 global password_check
+global hash_username
+global hash_password
 
 #testing with tkinter to see how to make a basic window
 
@@ -73,8 +75,17 @@ def LoginSystem():
     Button(text="quit", foreground='#7a0909', command=lambda:[LoginScreen.destroy, recommending()], height=2, width=20,).pack()
     time.sleep(2)
     
-    #file = r"C:\Users\stu-dyer.b\OneDrive - Brighter Futures Learning Partnership Trust\Documents\GitHub\Computer-Science-Programming-Projects\Program\Login.txt"
-    file = r"C:\Users\Biowa\Desktop\Computer-Science-Programming-Projects\Program\Login.txt"
+   # file = r"C:\Users\stu-dyer.b\OneDrive - Brighter Futures Learning Partnership Trust\Documents\GitHub\Computer-Science-Programming-Projects\Program\Login.txt"
+    file = r'Program/Login.txt'
+
+    with open(file) as f:
+            FileReader = csv.reader(f)
+            FileArray = list(FileReader)
+            
+            for i in range(0, len(FileArray)):
+                print(FileArray[i][0])
+                if str(FileArray[i[0]]) == str(hash_username) and str(FileArray[i[0]]) == str(hash_password):
+                    command=quit
 
     LoginScreen.mainloop()
 
@@ -83,12 +94,25 @@ def LoginSystem():
 
 
 
-def Login():
-    hash_username = (username_entry.get()).encode()
-    hash_password = (password_entry.get()).encode()
-    print( sha256(hash_username).hexdigest())
-    print( sha256(hash_password).hexdigest())
 
+
+def Login():
+    hash_username = ( sha256((username_entry.get()).encode()).hexdigest())
+    hash_password = ( sha256((password_entry.get()).encode()).hexdigest())
+    print(hash_username)
+    print(hash_password)
+    file = r'Program/Login.txt'
+
+    with open(file) as f:
+            FileReader = csv.reader(f)
+            FileArray = list(FileReader)
+            
+            for i in range(0, len(FileArray)):
+                print(FileArray[i][0])
+                if str(FileArray[i[0]]) == str(hash_username) and str(FileArray[i[0]]) == str(hash_password):
+                    command = quit
+                else:
+                    print("Invalid username or password")
 #print("SHA-256:", hashlib.sha256(message).hexdigest())
 
 # going to put this system on hold while i focus on my recommendation system
@@ -120,7 +144,7 @@ def recommending():
 
     for row in Inventory.temp: # getting error saying object is not iterable
         print(row.get("Name") + " " + row.get("UC"))
-        dropdown.append((row.get('Name') + " " + row.get('UC')))
+        dropdown.append((row.get('Type') + " " + row.get('Name') + " " + row.get('UC')))
 
     scrollbar = Scrollbar(InventoryScreen)
     #InvList = Listbox(InventoryScreen, yscrollcommand= scrollbar.set )
@@ -130,6 +154,8 @@ def recommending():
         Choice(choice)
 
     def Choice(displayChoice):
+        global GetType
+        Availability = ""
         # if the selected item isnt available, it will search once for the tag for its category
         # it will then search all the csv for items with the same tag and add them to a list to be printed as a recommended alternative
         SimilarItems = []
@@ -137,10 +163,12 @@ def recommending():
         print(displayChoice)
         #GetUC = displayChoice[displayChoice.rindex(' ')]
         GetUC = int(displayChoice.rsplit(' ')[-1])
-        print(GetUC)
-        #getUC is integer
+        GetType = str(displayChoice.rsplit(' ')[0])
 
-
+        print("GetUC:",GetUC)
+        print("GetType:",GetType)
+        #print(GetType)
+        
         # with open(file) as f:
 
             # FileReader = csv.reader(f)
@@ -148,18 +176,39 @@ def recommending():
             # for row in FileArray:
             #     print(row)
             #     print(FileArray)
-<<<<<<< Updated upstream
-        File = r'Program\Inventory.csv'
-=======
 
-        #File = r'Program\Inventory.csv'
-        File = r"C:\Users\Biowa\Desktop\Computer-Science-Programming-Projects\Program\Inventory .csv"
->>>>>>> Stashed changes
+        File = r'Program/Inventory.csv'
+        
+
         with open(File) as f:
             FileReader = csv.reader(f)
             FileArray = list(FileReader)
-            j = next(filter(lambda obj: obj.get('UC') == str(GetUC), FileArray), None)
+            """
+             j = next(filter(lambda obj: obj.get('UC') == str(GetUC), FileArray), None)
             print(j)
+            """
+            for i in range(0, len(FileArray)):
+                print(FileArray[i][3])
+                if str(FileArray[i][3]) == str(GetUC):
+                    Availability = str(FileArray[i][4])
+                    print(Availability)
+                    print("GetType is:",GetType)
+                    break
+
+            if Availability == "no":
+                for i in range(0,len(FileArray)):
+                    print(FileArray[i][0])
+                    TypeConv = str(GetType)
+                    if str(FileArray[0]) == TypeConv and str(FileArray[4] == "yes"):
+                        CompChoice = str(FileArray[i])
+                        print("Flag")
+                        print(CompChoice)
+                        break
+
+                    
+                        
+                    
+           
             #print(FileArray)
         #    for row in FileArray:
         #        if row[3] == GetUC:
@@ -194,4 +243,4 @@ def getBox():
 
 LoginSystem()   
 
-#recommending() 
+#recommending(
